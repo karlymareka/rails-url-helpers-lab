@@ -8,7 +8,7 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
-    #binding.pry 
+    #binding.pry
     if @student.active === true
       @activity_status = 'active'
     else
@@ -20,8 +20,10 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     if @student.active === true
       @student.active = false
+      @activity_status = 'inactive'
     else
       @student.active = true
+      @activity_status = 'active'
     end
     @student.save!
     render "show"
